@@ -27,7 +27,7 @@ module Bwoken
     def env_variables
       {
         'UIASCRIPT' => %Q|"#{path}"|,
-        'UIARESULTSPATH' => %Q|"#{Bwoken.results_path}"|
+        'UIARESULTSPATH' => %Q|"#{Bwoken.results_path(language)}"|
       }
     end
 

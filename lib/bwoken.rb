@@ -72,8 +72,9 @@ module Bwoken
       end
     end
 
-    def results_path
-      File.join(tmp_path, 'results').tap do |dir_name|
+    def results_path path
+      path = path || "results"
+      File.join(tmp_path, path).tap do |dir_name|
         FileUtils.mkdir_p(dir_name) unless File.directory?(dir_name)
       end
     end
