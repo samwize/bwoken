@@ -110,6 +110,7 @@ BANNER
           s.focus = options[:focus]
           s.formatter = options[:formatter]
           s.simulator = options[:simulator]
+          s.languages = options[:languages]
         end.execute
       end
 

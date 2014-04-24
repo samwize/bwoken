@@ -18,6 +18,7 @@ module Bwoken
     attr_accessor :formatter
     attr_accessor :simulator
     attr_accessor :app_dir
+    attr_accessor :language
 
     def initialize
       yield self if block_given?
@@ -40,7 +41,8 @@ module Bwoken
         -D "#{self.class.trace_file_path}" \
         -t "#{Bwoken.path_to_automation_template}" \
         "#{app_dir}" \
-        #{env_variables_for_cli}|
+        #{env_variables_for_cli} \
+        -AppleLanguages "(#{language})"|
     end
 
     def device_flag

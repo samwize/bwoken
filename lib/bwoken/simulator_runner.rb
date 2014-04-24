@@ -9,6 +9,7 @@ module Bwoken
     attr_accessor :simulator
     attr_accessor :app_dir
     attr_accessor :device_family
+    attr_accessor :languages
 
     alias_method :feature_names, :focus
 
@@ -18,10 +19,12 @@ module Bwoken
 
     def execute
       Simulator.device_family = device_family
-      scripts.each(&:run)
+      languages.each do |l|
+        scripts(l).each(&:run)
+      end
     end
 
-    def scripts
+    def scripts language
       script_filenames.map do |filename|
         Script.new do |s|
           s.path = filename
@@ -29,6 +32,7 @@ module Bwoken
           s.formatter = formatter
           s.simulator = simulator
           s.app_dir = app_dir
+          s.language = language
         end
       end
     end
